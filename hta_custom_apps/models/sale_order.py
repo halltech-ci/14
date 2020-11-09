@@ -2,17 +2,6 @@
 
 from odoo import models, fields, api, _
 from odoo.addons import decimal_precision as dp
-# class custom_apps(models.Model):
-#     _name = 'custom_apps.custom_apps'
-
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         self.value2 = float(self.value) / 100
 
 _SALE_ORDER_DOMAINE = [('fm', 'FABRICATION MECANIQUE'),
                           ('cm', 'CONSTRUCTION METALLIQUE'),
@@ -31,27 +20,7 @@ _SALE_ORDER_DOMAINE = [('fm', 'FABRICATION MECANIQUE'),
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    '''
-    @api.depends('order_line.price_total', 'discount_rate', 'tax_id.amount')
-    def _amount_all(self):
-        """
-        Compute the total amounts of the SO.
-        """
-        for order in self:
-            amount_untaxed = discount_amount = 0.0
-            for line in order.order_line:
-                amount_untaxed += line.price_subtotal 
-            discount_amount = amount_untaxed * order.discount_rate/100#montant de la remise
-            amount_with_discount = amount_untaxed - discount_amount #le montant apres remise
-            amount_tax = amount_with_discount * order.tax_id.amount/100#le montant de la tva
-            order.update({
-                'amount_untaxed': amount_untaxed,
-                'amount_tax': amount_tax,
-                'amount_total': amount_tax + amount_with_discount,
-                'discount_amount': discount_amount,
-                'amount_with_discount': amount_with_discount
-            })
-    '''
+    
     
     project_id = fields.Many2one("project.project", "Project", ondelete= "cascade")
     project_code = fields.Char("Code Projet", related='project_id.project_code')
@@ -60,15 +29,6 @@ class SaleOrder(models.Model):
     sale_order_recipient = fields.Char("Destinataire")
     sale_order_type = fields.Selection(_SALE_ORDER_DOMAINE, string="Domaine",
                                  required=True, index=True, default='fm')
-    #discount_rate = fields.Float(string='Discount (%)', digits=dp.get_precision('Discount'), default=0.0)
-    #amount_untaxed = fields.Monetary(string='Untaxed Amount', store=True, readonly=True, compute='_amount_all', track_visibility='always')
-    #discount_amount = fields.Monetary(string='Discount Amount', store=True, readonly=True, compute='_amount_all', track_visibility='always')
-    #amount_tax = fields.Monetary(string='Taxes', store=True, readonly=True, compute='_amount_all')
-    #tax_id = fields.Many2one('account.tax', string='Taxes', default=lambda self:self.env['account.tax'].search([('type_tax_use', '=', 'sale')], limit=1))
-    #amount_total = fields.Monetary(string='Total', store=True, readonly=True, compute='_amount_all')
-    #amount_with_discount = fields.Monetary(string='Amount with discount', store=True, readonly=True, compute='_amount_all')
-    #Override create methode to add multiple sequencec
-    
     @api.model
     def create(self, vals):
         if vals.get('name', _('New')) == _('New'):

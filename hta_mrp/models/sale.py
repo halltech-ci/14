@@ -18,7 +18,7 @@ class SaleOrder(models.Model):
         for order in self:
             if not order.sale_mrp_product and order.description:
                 product_name = order.description
-                route_id = self.env['stock.location.route'].search([('name', '=', 'Manufacture')]).id
+                route_id = self.env['stock.location.route'].search([('name', '=', 'Manufacture')])#.id
                 route = []
                 route_ids = route.append(route_id)
                 product_prod = product_product.create({
@@ -26,16 +26,10 @@ class SaleOrder(models.Model):
                     'type': 'product',
                     'purchase_ok': False,
                     'categ_id': 1,
-                    'route_ids': route_ids
+                    'route_ids': route_id#s
                 })
             order.sale_mrp_product = product_prod
-            if not order.mo_id:
-                manufacture_order.create({
-                    'product_id': order.sale_mrp_product,
-                    'mrp_order_line_ids': order.order_line
-                })
-            
-            
+             
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
     
