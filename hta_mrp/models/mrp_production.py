@@ -19,5 +19,6 @@ class MrpProduction(models.Model):
     @api.constrains('move_raw_ids', 'mrp_order_line_ids')
     def _check_product_qty(self):
         for product in self:
-            if product.move_raw_ids.product_uom_qty > product.mrp_order_line_ids.product_uom_qty:
-                raise ValidationError(_('Quantity of {0} can not be greather than {1}'.format(product.move_raw_ids.product_id.name, product.mrp_order_line_ids.product_uom_qty)))
+            if product.mrp_order_line_ids.product_id:
+                if product.move_raw_ids.product_uom_qty > product.mrp_order_line_ids.product_uom_qty:
+                    raise ValidationError(_('Quantity of {0} can not be greather than{1}'.format(product.move_raw_ids.product_id.name, product.mrp_order_line_ids.product_uom_qty)))
