@@ -3,4 +3,3 @@
 #from . import models
 from . import sale_order
 from . import product_template
-from . import product_secondary_unit

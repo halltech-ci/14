@@ -20,8 +20,9 @@
     'version': '14.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['product',
-                'sale'],
+    'depends': ['sale',
+               'product_attribute',
+               ],
 
     # always loaded
     'data': [
