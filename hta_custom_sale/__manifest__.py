@@ -20,11 +20,12 @@
     'version': '14.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['sale'],
+    'depends': ['product',
+                'sale'],
 
     # always loaded
     'data': [
-        'security/ir.model.access.csv',
+        #'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
         'views/product_views.xml',
