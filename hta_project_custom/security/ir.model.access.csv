@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_hta_project_custom_hta_project_custom,hta_project_custom.hta_project_custom,model_hta_project_custom_hta_project_custom,base.group_user,1,1,1,1
+access_project_task_material_user,access_project_task_material_user,model_project_task_material,base.group_user,1,0,0,0
+access_project_task_material_employee,access_project_task_material_employee,model_project_task_material,project.group_project_user,1,1,1,1
