@@ -11,7 +11,9 @@
                         <tree string="Product Used" editable="top">
                             <field name ="product_code"/>
                             <field name="product_id" />
+                            <field name="initial_qty" />
                             <field name="quantity" />
+                            <field name="qty_used" />
                         </tree>
                     </field>
                 </page>
@@ -19,7 +21,8 @@
                 <page name="equipment_used" string="Equipments" groups="project.group_project_user">
                     <field name="equipment_ids">
                         <tree string="Equipment Used" editable="top">
-                            <field name ="category_id"/>
+                            <field name ="equipment_id"/>
+                            <field name="equipment_category"/>
                         </tree>
                     </field>
                 </page>
