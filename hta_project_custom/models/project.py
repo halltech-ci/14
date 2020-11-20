@@ -12,7 +12,7 @@ class ProjectTask(models.Model):
         string="Product Used",
     )
     
-    equipment_ids = fields.One2many('maintenance.equipment', "project_task_id")
+    equipment_ids = fields.One2many('equipment.equipment', "project_task_id")
 
 
 class ProjectTaskMaterial(models.Model):
@@ -28,6 +28,8 @@ class ProjectTaskMaterial(models.Model):
         comodel_name="product.product", string="Product", required=True
     )
     quantity = fields.Float(string="Quantity")
+    initial_qty = fields.Float(string="Initial Qty")
+    qty_used = fields.Float(string="Quantity Used")
     product_code = fields.Char(related="product_id.default_code")
 
     @api.constrains("quantity")
