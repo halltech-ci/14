@@ -38,7 +38,6 @@ class ProjectTask(models.Model):
                         task.stock_state = state
                         break
 
-
     material_ids = fields.One2many(
         comodel_name="project.task.material",
         inverse_name="task_id",
@@ -53,6 +52,7 @@ class ProjectTask(models.Model):
     stock_move_ids = fields.Many2many(
         comodel_name='stock.move',
         compute='_compute_stock_move',
+        store = True,
         string='Stock Moves',
     )
     analytic_account_id = fields.Many2one(
@@ -63,6 +63,7 @@ class ProjectTask(models.Model):
     analytic_line_ids = fields.Many2many(
         comodel_name='account.analytic.line',
         compute='_compute_analytic_line',
+        store = True,
         string='Analytic Lines',
     )
     consume_material = fields.Boolean(
