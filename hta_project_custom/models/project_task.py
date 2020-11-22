@@ -104,7 +104,7 @@ class ProjectTask(models.Model):
         return res
 
     def write(self, vals):
-        res = super(Task, self).write(vals)
+        res = super(ProjectTask, self).write(vals)
         for task in self:
             if 'stage_id' in vals or 'material_ids' in vals:
                 if task.consume_material:
