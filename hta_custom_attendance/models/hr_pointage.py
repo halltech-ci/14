@@ -15,6 +15,7 @@ class HrPointage(models.Model):
     
      employee_id = fields.Many2one('hr.employee', default='')
      attendance_id = fields.Many2one()
+    
      leave_id = fiels.Many2one('hr.leave', string= 'Leave id', required=True)   
      number_of_days = fields.Float(string="Nombre de jours", compute='_compute_number_days')
      number_of_hours_absentee = fields.Float(string='Nombre heures', compute='_compute_number_hours')
