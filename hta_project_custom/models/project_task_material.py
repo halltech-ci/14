@@ -12,8 +12,7 @@ class ProjectTaskMaterial(models.Model):
     task_id = fields.Many2one(
         comodel_name="project.task", string="Task", ondelete="cascade", required=True
     )
-    product_id = fields.Many2one('product.product', string="Product"
-        domain="[('type', 'in', ('consu', 'product'))]"
+    product_id = fields.Many2one('product.product', string="Product", domain="[('type', 'in', ('consu', 'product'))]"
     )
     quantity = fields.Float(string="Quantity")
     initial_qty = fields.Float(string="Initial Qty")
