@@ -12,12 +12,11 @@ class StockMove(models.Model):
         string='Project Task Product',
     )
 
-    @api.model
-    def _action_done(self):
+    """def _action_done(self):
         # The analytical amount is updated with the value of the
         # stock movement, because if the product has a tracking by
         # lot / serial number, the cost when creating the
         # analytical line is not correct.
         res = super(StockMove, self)._action_done()
         self.mapped('task_product_id')._update_unit_amount()
-        return res
+        return res"""
