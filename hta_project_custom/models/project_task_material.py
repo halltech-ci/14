@@ -18,7 +18,6 @@ class ProjectTaskMaterial(models.Model):
     initial_qty = fields.Float(string="Initial Qty")
     qty_used = fields.Float(string="Quantity Used")
     product_code = fields.Char(related="product_id.default_code")
-    
     stock_move_id = fields.Many2one(
         comodel_name='stock.move',
         string='Stock Move',
