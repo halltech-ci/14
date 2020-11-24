@@ -29,7 +29,6 @@ class ProjectTaskMaterial(models.Model):
     )
     product_uom_id = fields.Many2one(
         comodel_name='uom.uom',
-        oldname="product_uom",
         string='Unit of Measure',
     )
 
