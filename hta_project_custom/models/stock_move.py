@@ -12,7 +12,7 @@ class StockMove(models.Model):
         string='Project Task Product',
     )
 
-    def action_done(self):
+    def action_done(self, cancel_backorder=False):
         # The analytical amount is updated with the value of the
         # stock movement, because if the product has a tracking by
         # lot / serial number, the cost when creating the
