@@ -3,9 +3,9 @@
 # from odoo import models, fields, api
 
 
-# class project_stock_request(models.Model):
-#     _name = 'project_stock_request.project_stock_request'
-#     _description = 'project_stock_request.project_stock_request'
+# class hta_custom_sale(models.Model):
+#     _name = 'hta_custom_sale.hta_custom_sale'
+#     _description = 'hta_custom_sale.hta_custom_sale'
 
 #     name = fields.Char()
 #     value = fields.Integer()
