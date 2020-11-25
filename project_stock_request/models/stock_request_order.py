@@ -4,7 +4,10 @@ from odoo import models, fields, api
 
 
 class StockRequestOrder(models.Model):
-    _inherit = 'stock.request.order'
+    _name = 'stock.request.order'
+    _description = 'Stock Request Order'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _order = 'id desc'
     
     @api.model
     def default_get(self, fields):
