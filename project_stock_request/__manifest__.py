@@ -21,7 +21,7 @@
 
     # any module necessary for this one to work correctly
     'depends': ['project',
-               'warehouse',
+               'stock',
                ],
 
     # always loaded
