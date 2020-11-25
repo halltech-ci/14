@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
+from odoo.addons import decimal_precision as dp
 
 class StockRequest(models.AbstractModel):
     _name = "stock.request.abstract"
