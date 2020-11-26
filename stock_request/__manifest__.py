@@ -20,7 +20,7 @@
     'version': '14.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['stock_request_order'],
+    'depends': ['project_stock_request'],
 
     # always loaded
     'data': [
