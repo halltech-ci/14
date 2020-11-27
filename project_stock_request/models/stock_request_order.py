@@ -33,14 +33,14 @@ class StockRequestOrder(models.Model):
     
     name = fields.Char('Name', copy=False, required=True, readonly=True,
         states={'draft': [('readonly', False)]}, default='/')
-    project_id = fields.Many2one('project.project', string='Project',
-                                 track_visibility='onchange')
-    project_task_id = fields.Many2one('project.task', string='Project Task',
-                                      track_visibility='onchange')
+    project_id = fields.Many2one('project.project', string='Project'
+                                 )
+    project_task_id = fields.Many2one('project.task', string='Project Task'
+                                      )
     state = fields.Selection(
         selection=_get_request_order_states,
         string='Status', copy=False, default='draft', index=True,
-        readonly=True, track_visibility='onchange',
+        readonly=True
     )
     requested_by = fields.Many2one(
         'res.users', 'Requested by', required=True,
