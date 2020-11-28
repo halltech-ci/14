@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "stock_request",
+    'name': "project_request",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -20,11 +20,13 @@
     'version': '14.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['project_stock_request'],
+    'depends': ['stock',
+               ],
 
     # always loaded
     'data': [
-        #'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
+        'security/stock_request_security.xml',
         'views/views.xml',
         'views/templates.xml',
     ],

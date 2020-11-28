@@ -46,11 +46,10 @@ class StockRequest(models.Model):
     state = fields.Selection(
         selection=_get_request_states, string='Status',
         copy=False, default='draft', index=True,
-        readonly=True, track_visibility='onchange',
+        readonly=True
     )
     requested_by = fields.Many2one(
         'res.users', 'Requested by', required=True,
-        track_visibility='onchange',
         default=lambda s: s._get_default_requested_by(),
     )
     expected_date = fields.Datetime(
