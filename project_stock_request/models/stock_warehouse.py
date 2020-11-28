@@ -27,7 +27,7 @@ class StockWarehouse(models.Model):
                 )
             )
         if any(
-            self.env["stock.request.order"].search(
+            self.env["project_stock_request"].search(
                 [
                     ("company_id", "!=", rec.company_id.id),
                     ("warehouse_id", "=", rec.id),

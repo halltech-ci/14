@@ -273,7 +273,7 @@ class ProjectStockRequest(models.Model):
         upd_vals = vals.copy()
         if upd_vals.get("name", "/") == "/":
             upd_vals["name"] = self.env["ir.sequence"].next_by_code(
-                "stock.request.order"
+                "project_stock_request"
             )
         return super().create(upd_vals)
 
@@ -323,7 +323,7 @@ class ProjectStockRequest(models.Model):
             )
         expected = self.default_get(["expected_date"])["expected_date"]
         try:
-            order = self.env["stock.request.order"].create(
+            order = self.env["project_stock_request"].create(
                 dict(
                     expected_date=expected,
                     stock_request_ids=[
