@@ -42,6 +42,27 @@
                     attrs="{'readonly': [('parent.state', 'in', ('done', 'cancel'))]}"
                 />
             </xpath>
-        </field>
-    </record>
+            </field>
+        </record>
+            <record id="view_order_form_inherit" model="ir.ui.view">
+                <field name="name">Sale Order custom view</field>
+                <field name="model">sale.order</field>
+                <field name="inherit_id" ref="sale.view_order_form" />
+                <field name="arch" type="xml">
+                    <xpath expr="//sheet/group/group/field[@name='payment_term_id']" position="after">
+                        <field name="sale_order_recipient"/>
+                        <field name='project_key'/>
+                    </xpath>
+                    <xpath expr="//sheet/group/group" position="inside">
+                        <field name="project_id"/>
+                        <field name="client_order_ref"/>
+                    </xpath>
+                    <xpath expr="//sheet/group" position="after">
+                      <group>
+                          <field name="description"/>
+                      </group>
+                    </xpath>
+                </field>
+            </record>
+        
 </odoo>
