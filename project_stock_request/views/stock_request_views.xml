@@ -1,0 +1,15 @@
+<odoo>
+  <data>
+    <record id="stock_request_order_tree_inherit" model="ir.ui.view">
+        <field name="name">stock.request.order.tree_inherit</field>
+        <field name="model">stock.request</field>
+        <field name="inherit_id" ref="stock_request.view_stock_request_tree"/>
+        <field name="arch" type="xml">
+            <field name="picking_policy" position="after">
+                <field name="project_id"/>
+                <field name="project_task_id" />
+            </field>
+        </field>
+    </record>
+  </data>
+</odoo>
