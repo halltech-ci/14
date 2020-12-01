@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 #from . import models
-from . import puchase_request_allocation
+from . import purchase_request_allocation
 from . import orderpoint
 from . import purchase_request
 from . import purchase_request_line
