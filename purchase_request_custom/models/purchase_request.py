@@ -4,7 +4,7 @@ from odoo import models, fields, api
 
 
 class PurchaseOrder(models.Model):
-    _inherit = "purchase.order"
+    _inherit = "purchase.request"
     
     @api.depends('requested_by')
     def _compute_has_manager(self):
