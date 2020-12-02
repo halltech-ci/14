@@ -23,6 +23,7 @@
     'depends': ['product',
                'stock',
                ],
+    "pre_init_hook": "pre_init_product_code",
 
     # always loaded
     'data': [
