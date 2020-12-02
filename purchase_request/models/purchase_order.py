@@ -58,6 +58,7 @@ class PurchaseOrder(models.Model):
                 request.message_post(
                     body=message, subtype_id=self.env.ref("mail.mt_comment").id
                 )
+
         return True
 
     def _purchase_request_line_check(self):

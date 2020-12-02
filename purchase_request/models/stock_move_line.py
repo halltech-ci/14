@@ -102,6 +102,7 @@ class StockMoveLine(models.Model):
                         body=message, subtype_id=self.env.ref("mail.mt_comment").id
                     )
 
+
                     picking_message = self._picking_confirm_done_message_content(
                         message_data
                     )

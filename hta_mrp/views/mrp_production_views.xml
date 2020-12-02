@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+      <record id="mrp_production_view_inherit" model="ir.ui.view">
+          <field name="name">mrp_production_form</field>
+          <field name="model">mrp.production</field>
+          <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+          <field name="arch" type="xml">
+              <h1 position="after">
+                <label for="description"/>
+                <field name="description"/>
+              </h1>
+              <xpath expr="//sheet/group/group/field[@name='product_id']" position="before">
+                  <field name="sale_order_id"/>
+              </xpath>
+              <xpath expr="//notebook/page" position="before">
+                  <page string="Order Line">
+                      <field name="mrp_order_line_ids">
+                          <tree>
+                              <field name="product_code" attrs="{'invisible': [('in_mrp_line','=',False)]}"/>
+                              <field name="product_id" attrs="{'invisible': [('in_mrp_line','=',False)]}"/>
+                              <field name="product_uom_qty" attrs="{'invisible': [('in_mrp_line','=',False)]}"/>
+                              <field name="product_uom" attrs="{'invisible': [('in_mrp_line','=',False)]}"/>
+                              <field name="in_mrp_line" invisible="1"/>
+                          </tree>
+                      </field>
+                  </page>
+              </xpath>
+          </field>
+      </record> 
+  </data>
+</odoo>
