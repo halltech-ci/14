@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "hta_custom_sale",
+    'name': "purchase_request_custom",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -14,25 +14,19 @@
     'website': "http://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/13.0/odoo/addons/base/data/ir_module_category_data.xml
+    # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
-    'category': 'Sale',
+    'category': 'Purchase',
     'version': '14.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['sale_management',
-               'product_attribute',
-                'project_key'
-               ],
+    'depends': ['purchase_request'],
 
     # always loaded
     'data': [
-        #'security/ir.model.access.csv',
+        # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
-        'views/product_views.xml',
-        'views/sale_order_views.xml',
-        'report/sale_order_report.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
