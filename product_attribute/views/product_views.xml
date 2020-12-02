@@ -20,35 +20,33 @@
                 </group>
             </xpath>
             <!-- Make default_code mandatory -->
-          <xpath expr="//field[@name='default_code']" position="replace">
-            <field name="default_code" 
-                   attrs="{'invisible': [('product_variant_count', '&gt;', 1)], 'required':[('type', 'in', ('product', 'consu'))]}"
-                   />
-          </xpath>
+          <field name="default_code" position="attributes">
+                <attribute name="required">True</attribute>
+            </field>
         </field>
     </record>
-    <record id="inherit_product_normal_form_view" model="ir.ui.view">
-      <!--<field name="name">inherit purchase order form</field>-->
-      <field name="model">product.product</field>
-      <field name="inherit_id" ref="product.product_normal_form_view"/>
-      <field name="arch" type="xml">
-          <!-- Make default_code mandatory -->
-          <xpath expr="//field[@name='default_code']" position="replace">
-            <field name="default_code" attrs="{'invisible': [('product_variant_count', '&gt;', 1)], 'required':[('type', 'in', ('product', 'consu'))]}"/>
-          </xpath>
-      </field>
+    <record id="product_normal_form_code_mandatory_view" model="ir.ui.view">
+        <field name="name">product.normal.form.code.mandatory.view</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view" />
+        <field name="arch" type="xml">
+            <field name="default_code" position="attributes">
+                <attribute name="required">True</attribute>
+            </field>
+        </field>
     </record>
     
-    <record id="inherit_product_template_only_form_view" model="ir.ui.view">
-      <!--<field name="name">inherit purchase order form</field>-->
-      <field name="model">product.template</field>
-      <field name="inherit_id" ref="product.product_template_only_form_view"/>
-      <field name="arch" type="xml">
-          <!-- Make default_code mandatory -->
-          <xpath expr="//field[@name='default_code']"
-            position="replace">
-            <field name="default_code" attrs="{'invisible': [('product_variant_count', '&gt;', 1)], 'required':[('type', 'in', ('product', 'consu'))]}"/>
-          </xpath>
-      </field>
+    <record id="product_template_only_form_code_mandatory_view" model="ir.ui.view">
+        <field name="name">product.template.only.form.code.mandatory.view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view" />
+        <field name="arch" type="xml">
+            <field name="default_code" position="attributes">
+                <attribute
+                    name="attrs"
+                >{'invisible': [('product_variant_count', '&gt;', 1)],
+                    'required': [('product_variant_count', '=', 1)]}</attribute>
+            </field>
+        </field>
     </record>
 </odoo>
