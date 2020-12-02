@@ -29,6 +29,7 @@ class SaleOrder(models.Model):
     sale_order_recipient = fields.Char("Destinataire")
     sale_order_type = fields.Selection(_SALE_ORDER_DOMAINE, string="Domaine",
                                  required=True, index=True, default='fm')
+    """
     @api.model
     def create(self, vals):
         if vals.get('name', _('New')) == _('New'):
@@ -48,4 +49,4 @@ class SaleOrder(models.Model):
             vals['partner_shipping_id'] = vals.setdefault('partner_shipping_id', addr['delivery'])
             vals['pricelist_id'] = vals.setdefault('pricelist_id', partner.property_product_pricelist and partner.property_product_pricelist.id)
         result = super(SaleOrder, self).create(vals)
-        return result
+        return result"""
