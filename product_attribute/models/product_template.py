@@ -11,6 +11,7 @@ class ProductTemplate(models.Model):
         string="Secondary Unit of Measure",
         help="Default Secondary Unit of Measure.",
     )
+    type = fields.Selection(default='service')
 
 class ProductSecondaryUnit(models.Model):
     _name = "product.secondary.unit"
