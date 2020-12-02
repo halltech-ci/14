@@ -22,6 +22,7 @@
     # any module necessary for this one to work correctly
     'depends': ['sale_management',
                'product_attribute',
+                'project'
                ],
 
     # always loaded
@@ -30,7 +31,8 @@
         'views/views.xml',
         'views/templates.xml',
         'views/product_views.xml',
-        'views/sale_order_views.xml'
+        'views/sale_order_views.xml',
+        'report/sale_order_report.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

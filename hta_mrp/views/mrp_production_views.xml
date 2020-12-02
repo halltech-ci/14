@@ -11,7 +11,7 @@
                 <label for="description"/>
                 <field name="description"/>
               </h1>
-              <xpath expr="//sheet/group/group/field[@name='product_id']" position="before">
+              <!--<xpath expr="//sheet/group/group/field[@name='product_id']" position="before">
                   <field name="sale_order_id"/>
               </xpath>
               <xpath expr="//notebook/page" position="before">
@@ -26,7 +26,7 @@
                           </tree>
                       </field>
                   </page>
-              </xpath>
+              </xpath>-->
           </field>
       </record> 
   </data>
