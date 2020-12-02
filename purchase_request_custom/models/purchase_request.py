@@ -24,8 +24,6 @@ class PurchaseOrder(models.Model):
                 else:
                     rec.is_project_approver = False
 
-    
-    
     sale_order = fields.Many2one('sale.order', string='Sale Order')
     project_code = fields.Char(related='sale_order.project_key', string="Project", readonly=True)
     purchase_type = fields.Selection(selection=[('project', 'Projet'), ('autres', 'Autres')], string="Request Type")
