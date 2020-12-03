@@ -12,10 +12,10 @@ class ProductProduct(models.Model):
         "Internal Reference", index=True, default=_get_default_code
     )
     
-    _sql_constraints = [
+    """_sql_constraints = [
         (
             "default_code_uniq",
             "unique(default_code)",
             "Internal Reference must be unique across the database!",
         )
-    ]
+    ]"""
