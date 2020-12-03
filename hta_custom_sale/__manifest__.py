@@ -22,7 +22,7 @@
     # any module necessary for this one to work correctly
     'depends': ['sale_management',
                'product_attribute',
-                'project'
+                'project_key'
                ],
 
     # always loaded
