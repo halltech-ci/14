@@ -617,7 +617,7 @@ class TestStockRequestBase(TestStockRequest):
         self.assertEqual(picking.origin, order.name)
         packout1 = picking.move_line_ids[0]
         packout1.qty_done = 5
-        picking.with_user(self.stock_request_manager).action_done()
+        picking.with_user(self.stock_request_manager)._action_done()
         self.assertEqual(stock_request.qty_in_progress, 0.0)
         self.assertEqual(stock_request.qty_done, stock_request.product_uom_qty)
         self.assertEqual(order.state, "done")
@@ -662,7 +662,7 @@ class TestStockRequestBase(TestStockRequest):
         picking.with_user(self.stock_request_manager).action_assign()
         packout1 = picking.move_line_ids[0]
         packout1.qty_done = 1
-        picking.with_user(self.stock_request_manager).action_done()
+        picking.with_user(self.stock_request_manager)._action_done()
         self.assertEqual(stock_request.qty_in_progress, 0.0)
         self.assertEqual(stock_request.qty_done, stock_request.product_uom_qty)
         self.assertEqual(stock_request.state, "done")
@@ -705,7 +705,7 @@ class TestStockRequestBase(TestStockRequest):
         picking.with_user(self.stock_request_manager).action_assign()
         packout1 = picking.move_line_ids[0]
         packout1.qty_done = 10
-        picking.with_user(self.stock_request_manager).action_done()
+        picking.with_user(self.stock_request_manager)._action_done()
 
     def test_cancel_request(self):
         expected_date = fields.Datetime.now()

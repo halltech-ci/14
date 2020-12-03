@@ -2,6 +2,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 from odoo import api, models
+from odoo.exceptions import UserError
 
 
 class ProcurementGroup(models.Model):
@@ -26,4 +27,4 @@ class ProcurementGroup(models.Model):
             for index in indexes_to_pop:
                 procurements.pop(index)
             procurements.extend(new_procs)
-        return super().run(procurements, raise_user_error=True)
+        return super().run(procurements)
