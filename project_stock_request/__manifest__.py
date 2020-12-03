@@ -21,7 +21,7 @@
 
     # any module necessary for this one to work correctly
     'depends': ['stock_request',
-               'project',
+               'project_key',
                ],
 
     # always loaded

@@ -20,7 +20,9 @@
     'version': '14.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['purchase_request'],
+    'depends': ['purchase_request',
+                'hta_custom_sale',
+               ],
 
     # always loaded
     'data': [
