@@ -26,4 +26,4 @@ class ProcurementGroup(models.Model):
             for index in indexes_to_pop:
                 procurements.pop(index)
             procurements.extend(new_procs)
-        return super().run(procurements)
+        return super().run(procurements, raise_user_error=True)
