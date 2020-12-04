@@ -924,7 +924,7 @@ class TestStockRequestBase(TestStockRequest):
         # the action from the products, so test that they get a friendlier
         # error message.
         self.stock_request_user.groups_id -= self.stock_request_user_group
-        with self.assertRaisesRegexp(
+        with self.assertRaisesRegex(
             exceptions.UserError,
             "Unfortunately it seems you do not have the necessary rights "
             "for creating stock requests. Please contact your "
