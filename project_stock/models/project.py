@@ -10,7 +10,7 @@ class Task(models.Model):
     _inherit = "project.task"
 
     material_ids = fields.One2many(
-        comodel_name='project.task.material', inverse_name='task_id',
+        'project.task.material', 'task_id',
         string='Product Used')
 
 
@@ -21,10 +21,10 @@ class ProjectTaskMaterial(models.Model):
     _description = "Task Material Used"
 
     task_id = fields.Many2one(
-        comodel_name='project.task', string='Task', ondelete='cascade',
+        'project.task', string='Task', ondelete='cascade',
         required=True)
     product_id = fields.Many2one(
-        comodel_name='product.product', string='Product', required=True)
+        'product.product', string='Product', required=True)
     quantity = fields.Float(string='Quantity')
 
     @api.constrains('quantity')
