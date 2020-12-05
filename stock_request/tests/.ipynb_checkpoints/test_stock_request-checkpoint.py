@@ -558,8 +558,8 @@ class TestStockRequestBase(TestStockRequest):
         )
 
         # With no route found, should raise an error
-        #with self.assertRaises(exceptions.UserError):
-        #    stock_request.with_user(self.stock_request_manager).action_confirm()
+        with self.assertRaises(exceptions.UserError):
+            stock_request.with_user(self.stock_request_manager).action_confirm()
 
     def test_create_request_01(self):
         expected_date = fields.Datetime.now()
@@ -924,7 +924,7 @@ class TestStockRequestBase(TestStockRequest):
         # the action from the products, so test that they get a friendlier
         # error message.
         self.stock_request_user.groups_id -= self.stock_request_user_group
-        with self.assertRaisesRegex(
+        with self.assertRaisesRegexp(
             exceptions.UserError,
             "Unfortunately it seems you do not have the necessary rights "
             "for creating stock requests. Please contact your "
