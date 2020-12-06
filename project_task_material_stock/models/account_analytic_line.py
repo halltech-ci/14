@@ -12,7 +12,6 @@ class AccountAnalyticLine(models.Model):
         string='Project Task Material',
     )
 
-    @api.multi
     def _timesheet_postprocess_values(self, values):
         res = super(AccountAnalyticLine, self)._timesheet_postprocess_values(
             values)
