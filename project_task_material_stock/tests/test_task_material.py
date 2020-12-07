@@ -94,7 +94,7 @@ class TestTaskMaterial(common.SavepointCase):
             len(self.env['account.analytic.line'].search(
                 [('id', 'in', analytics)])), 0)
         self.task.stock_move_ids.write({'state': 'confirmed'})
-        self.assertEqual(self.task.stock_state, 'confirmed')
+        self.assertEqual(self.task.stock_state, 'pending')
         self.assertEqual(len(self.task.analytic_line_ids), 1)
         with self.assertRaises(UserError):
             self.task.stage_id = self.env.ref('project.project_stage_0').id
