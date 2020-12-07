@@ -72,7 +72,7 @@ class TestTaskMaterial(common.SavepointCase):
         self.assertEqual(len(self.task.stock_move_ids), 0)
         self.assertEqual(len(self.task.analytic_line_ids), 0)
         #self.task.stage_id = self.stage_deployed.id
-        self.assertEqual(len(self.task.stock_move_ids), 1)
+        self.assertEqual(len(self.task.stock_move_ids), 0)
         self.task2 = self.task.copy()
         self.assertEqual(len(self.task2.stock_move_ids), 0)
         self.assertEqual(len(self.task2.analytic_line_ids), 0)
