@@ -4,12 +4,12 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 from odoo.exceptions import UserError
+from collections import Counter
+from datetime import datetime
 
 import odoo.tests.common as common
 
 
-@common.at_install(False)
-@common.post_install(True)
 class TestTaskMaterial(common.SavepointCase):
 
     @classmethod
