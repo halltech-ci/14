@@ -84,7 +84,7 @@ class TestTaskMaterial(common.SavepointCase):
         #self.task2.stage_id = self.stage_deployed.id
         self.task2.stock_move_ids.write({'state': 'draft'})
         self.assertEqual(len(self.task2.stock_move_ids), 0)
-        self.assertEqual(len(self.task2.analytic_line_ids), 1)
+        self.assertEqual(len(self.task2.analytic_line_ids), 0)
         moves = self.task2.stock_move_ids.ids
         analytics = self.task2.analytic_line_ids.ids
         self.task2.unlink()
