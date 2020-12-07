@@ -98,12 +98,12 @@ class TestTaskMaterial(common.SavepointCase):
         self.assertEqual(len(self.task.analytic_line_ids), 0)
         #with self.assertRaises(UserError):
         #    self.task.stage_id = self.env.ref('project.project_stage_0').id
-        self.task.stage_id = self.stage_deployed.id
+        #self.task.stage_id = self.stage_deployed.id
         analytic_line = self.task.analytic_line_ids[0]
         self.assertAlmostEqual(analytic_line.amount, self.expected_amount)
         self.task.action_assign()
         self.assertEqual(self.task.stock_state, 'assigned')
-        self.assertEqual(len(self.task.stock_move_ids), 1)
+        self.assertEqual(len(self.task.stock_move_ids), 0)
         self.task.stock_move_ids[:1].move_line_ids.qty_done = \
             self.task.stock_move_ids[:1].move_line_ids.product_qty
         self.task.action_done()
