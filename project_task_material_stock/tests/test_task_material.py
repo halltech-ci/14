@@ -69,22 +69,22 @@ class TestTaskMaterial(common.SavepointCase):
                          [('category_id', '=', self.product1_uom.id)])
         self.assertEqual(self.task.stock_state, 'pending')
         self.task.stage_id = self.env.ref('project.project_stage_0').id
-        self.assertEqual(len(self.task.stock_move_ids), 0)
-        self.assertEqual(len(self.task.analytic_line_ids), 0)
-        #self.task.stage_id = self.stage_deployed.id
-        self.assertEqual(len(self.task.stock_move_ids), 0)
+        self.assertEqual(len(self.task.stock_move_ids), 1)
+        self.assertEqual(len(self.task.analytic_line_ids), 1)
+        self.task.stage_id = self.stage_deployed.id
+        self.assertEqual(len(self.task.stock_move_ids), 1)
         self.task2 = self.task.copy()
-        self.assertEqual(len(self.task2.stock_move_ids), 0)
-        self.assertEqual(len(self.task2.analytic_line_ids), 0)
+        self.assertEqual(len(self.task2.stock_move_ids), 1)
+        self.assertEqual(len(self.task2.analytic_line_ids), 1)
         self.task_material2 = self.env['project.task.material'].create(
             {'task_id': self.task2.id,
              'product_id': self.product1.id,
              'product_uom_id': self.product1_uom.id,
              'quantity': 3})
-        #self.task2.stage_id = self.stage_deployed.id
+        self.task2.stage_id = self.stage_deployed.id
         self.task2.stock_move_ids.write({'state': 'draft'})
-        self.assertEqual(len(self.task2.stock_move_ids), 0)
-        self.assertEqual(len(self.task2.analytic_line_ids), 0)
+        self.assertEqual(len(self.task2.stock_move_ids), 1)
+        self.assertEqual(len(self.task2.analytic_line_ids), 1)
         moves = self.task2.stock_move_ids.ids
         analytics = self.task2.analytic_line_ids.ids
         self.task2.unlink()
@@ -95,15 +95,15 @@ class TestTaskMaterial(common.SavepointCase):
                 [('id', 'in', analytics)])), 0)
         self.task.stock_move_ids.write({'state': 'confirmed'})
         self.assertEqual(self.task.stock_state, 'pending')
-        self.assertEqual(len(self.task.analytic_line_ids), 0)
-        #with self.assertRaises(UserError):
-        #    self.task.stage_id = self.env.ref('project.project_stage_0').id
-        #self.task.stage_id = self.stage_deployed.id
+        self.assertEqual(len(self.task.analytic_line_ids), 1)
+        with self.assertRaises(UserError):
+            self.task.stage_id = self.env.ref('project.project_stage_0').id
+        self.task.stage_id = self.stage_deployed.id
         analytic_line = self.task.analytic_line_ids[0]
         self.assertAlmostEqual(analytic_line.amount, self.expected_amount)
         self.task.action_assign()
         self.assertEqual(self.task.stock_state, 'assigned')
-        self.assertEqual(len(self.task.stock_move_ids), 0)
+        self.assertEqual(len(self.task.stock_move_ids), 1)
         self.task.stock_move_ids[:1].move_line_ids.qty_done = \
             self.task.stock_move_ids[:1].move_line_ids.product_qty
         self.task.action_done()
