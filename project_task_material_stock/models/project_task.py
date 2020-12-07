@@ -222,7 +222,7 @@ class ProjectTaskMaterial(models.Model):
             'task_material_id': [(6, 0, [self.id])],
         }
         amount_unit = \
-            self.product_id.with_context(uom=self.product_uom_id.id).price_get(
+            self.product_id.with_context(uom=self.product_uom_id.id).price_compute(
                 'standard_price')[self.product_id.id]
         amount = amount_unit * self.quantity or 0.0
         result = round(amount, company_id.currency_id.decimal_places) * -1
