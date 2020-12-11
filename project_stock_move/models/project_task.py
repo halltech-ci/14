@@ -45,6 +45,7 @@ class Task(models.Model):
         comodel_name='stock.move',
         compute='_compute_stock_move',
         string='Stock Moves',
+        store=True
     )
     analytic_account_id = fields.Many2one(
         comodel_name='account.analytic.account',
@@ -55,6 +56,7 @@ class Task(models.Model):
         comodel_name='account.analytic.line',
         compute='_compute_analytic_line',
         string='Analytic Lines',
+        store=True
     )
     consume_material = fields.Boolean(
         related='stage_id.consume_material',
