@@ -16,10 +16,10 @@ class TestTaskMaterial(common.SavepointCase):
     def setUpClass(cls):
         super(TestTaskMaterial, cls).setUpClass()
 
-        cls.company = cls.env.company
+        cls.company = cls.env.user.company_id
         """cls.env['res.company'].create({
             'name': 'Test company',
-        })"""#cls.env.ref("base.main_company")#cls.env.user.company_id
+        })"""
         
         cls.stage_deployed = cls.env['project.task.type'].create({
             'name': 'State Deployed example',

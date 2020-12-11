@@ -200,7 +200,7 @@ class ProjectTaskMaterial(models.Model):
 
     def _prepare_analytic_line(self):
         product = self.product_id
-        company_id = self.env.company#['res.company']._company_default_get('account.analytic.line')
+        company_id = product.company_id#self.env['res.company']._company_default_get('account.analytic.line')
         analytic_account = getattr(self.task_id, 'analytic_account_id', False)\
             or getattr(self.task_id.project_id, 'analytic_account_id', False)
         if not analytic_account:
@@ -260,8 +260,8 @@ class ProjectTaskMaterial(models.Model):
         # analytical line is not correct.
         for sel in self.filtered(lambda x: x.stock_move_id.state == 'done' and
                                  x.analytic_line_id.amount !=
-                                 x.stock_move_id.value):
-            sel.analytic_line_id.amount = sel.stock_move_id.value
+                                 x.stock_move_id.quantity_done):
+            sel.analytic_line_id.amount = sel.stock_move_id.quantity_done
 
     def unlink(self):
         self.unlink_stock_move()
