@@ -8,7 +8,7 @@
     "name": "Project Task Material",
     "summary": "Record products spent in a Task",
     "version": "12.0.1.0.0",
-    "category": "Project",
+    "category": "Project Management",
     "author": "Daniel Reis,"
               "Tecnativa,"
               "Odoo Community Association (OCA)",

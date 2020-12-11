@@ -18,6 +18,7 @@
     'application': False,
     "depends": [
         "stock_account",
+        'sale',
         "project_task_material",
     ],
     "data": [
