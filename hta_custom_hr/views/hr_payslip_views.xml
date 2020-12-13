@@ -11,6 +11,7 @@
                     <separator string="Leaves Days"/>
                     <div class="oe_right oe_button_box">
                         <button string="Import from Leaves" name="import_leaves_days" type="object" states="draft" />
+                        <button string="Import from Overtime" name="import_overtime_days" type="object" states="draft" />
                     </div>
                 </group>
             </field>
